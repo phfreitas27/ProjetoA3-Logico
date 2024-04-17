@@ -35,6 +35,14 @@ class UserController {
         if (!updatedUser) return res.status(404).send('User not found');
         res.status(200).json(updatedUser);
     }
+
+    resetSenha(req, res) {
+        const { user_email } = req.body;
+        console.log("update user ", req.body);
+        const updatedUser = userService.resetSenha(user_email);
+        if (!updatedUser) return res.status(404).send('User not found');
+        res.status(200).json(updatedUser);
+    }
 }
 
 module.exports = UserController;

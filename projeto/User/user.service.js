@@ -35,9 +35,22 @@ class UserService {
     if (userIndex === -1) return null;
     console.log("updade service ", userIndex);
     const updatesenha = { user_password };
-    console.log('Update senha: ',updatesenha)
+    console.log('Update senha: ',updatesenha);
     users[userIndex].user_password = updatesenha['user_password'];
     return updatesenha;
+  }
+
+  resetSenha(user_email) {
+    const userIndex = users.findIndex((user) => user.user_email === user_email);
+    if (userIndex === -1) return null;
+    console.log("updade service ", userIndex);
+
+    let user_password = "12345678";
+
+    const resetSenha = { user_password };
+    console.log('Update senha: ',resetSenha);
+    users[userIndex].user_password = resetSenha['user_password'];
+    return resetSenha;
   }
 }
 

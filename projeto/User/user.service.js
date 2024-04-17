@@ -41,7 +41,11 @@ class UserService {
 
   updatePassword(user_id, user_password) {
     const userIndex = users.findIndex((user) => user.user_id === user_id);
-    if (userIndex === -1) return null;
+
+    let foundUser = userIndex === -1 ? false : true;
+
+    if (foundUser === false) return null;
+    
     console.log("updade service ", userIndex);
     const updatePassword = { user_password };
     console.log('Update senha: ', updatePassword);
@@ -51,7 +55,11 @@ class UserService {
 
   resetPassword(user_email) {
     const userIndex = users.findIndex((user) => user.user_email === user_email);
-    if (userIndex === -1) return null;
+
+    let foundUser = userIndex === -1 ? false : true;
+
+    if (foundUser === false) return null;
+
     console.log("updade service ", userIndex);
 
     let new_user_password = generatePassword(8);

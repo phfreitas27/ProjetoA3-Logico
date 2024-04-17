@@ -19,27 +19,27 @@ class UserController {
         res.json(users);
     }
 
-    logarUser(req, res) {
+    loginUser(req, res) {
         const { user_email, user_password } = req.body;
-        const user = userService.logar(user_email, user_password);
+        const user = userService.login(user_email, user_password);
         if (!user) {
             return res.status(404).send('register not found');
         }
         res.json(user);
     }
 
-    updateSenha(req, res) {
+    updatePassword(req, res) {
         const { user_id ,user_password } = req.body;
         console.log("update user ", req.body);
-        const updatedUser = userService.updateSenha(user_id,user_password);
+        const updatedUser = userService.updatePassword(user_id,user_password);
         if (!updatedUser) return res.status(404).send('User not found');
         res.status(200).json(updatedUser);
     }
 
-    resetSenha(req, res) {
+    resetPassword(req, res) {
         const { user_email } = req.body;
         console.log("update user ", req.body);
-        const updatedUser = userService.resetSenha(user_email);
+        const updatedUser = userService.resetPassword(user_email);
         if (!updatedUser) return res.status(404).send('User not found');
         res.status(200).json(updatedUser);
     }

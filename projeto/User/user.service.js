@@ -16,6 +16,15 @@ const users = [
   },
 ];
 
+function generatePassword(length) {
+  var charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+      returnValue = "";
+  for (var i = 0, n = charset.length; i < length; ++i) {
+      returnValue += charset.charAt(Math.floor(Math.random() * n));
+  }
+  return returnValue;
+}
+
 class UserService {
   create(UserDTO) {
     users.push(UserDTO);
@@ -26,31 +35,31 @@ class UserService {
     return users.map((user) => new UserDTO(user));
   }
 
-  logar(user_email, user_password) {
+  login(user_email, user_password) {
     return users.filter((user) => user.user_email === user_email && user.user_password === user_password);
   }
 
-  updateSenha(user_id, user_password) {
+  updatePassword(user_id, user_password) {
     const userIndex = users.findIndex((user) => user.user_id === user_id);
     if (userIndex === -1) return null;
     console.log("updade service ", userIndex);
-    const updatesenha = { user_password };
-    console.log('Update senha: ',updatesenha);
-    users[userIndex].user_password = updatesenha['user_password'];
-    return updatesenha;
+    const updatePassword = { user_password };
+    console.log('Update senha: ', updatePassword);
+    users[userIndex].user_password = updatePassword['user_password'];
+    return updatePassword;
   }
 
-  resetSenha(user_email) {
+  resetPassword(user_email) {
     const userIndex = users.findIndex((user) => user.user_email === user_email);
     if (userIndex === -1) return null;
     console.log("updade service ", userIndex);
 
-    let user_password = "12345678";
+    let new_user_password = generatePassword(8);
 
-    const resetSenha = { user_password };
-    console.log('Update senha: ',resetSenha);
-    users[userIndex].user_password = resetSenha['user_password'];
-    return resetSenha;
+    const resetPassword = { new_user_password };
+    console.log('Update senha: ',resetPassword);
+    users[userIndex].user_password = resetPassword['user_password'];
+    return resetPassword;
   }
 }
 

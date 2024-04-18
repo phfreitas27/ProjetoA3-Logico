@@ -1,5 +1,5 @@
 import { UUID, randomUUID } from "crypto";
-import UserDTO from "./user.dto.ts";
+import UserDTO from "./user.dto.js";
 
 const users = [
   {
@@ -16,7 +16,7 @@ const users = [
 
 function generatePassword(length: number) {
   var charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
-      returnValue = "";
+      returnValue: string = "";
   for (var i = 0, n = charset.length; i < length; ++i) {
       returnValue += charset.charAt(Math.floor(Math.random() * n));
   }
@@ -60,11 +60,11 @@ export default class UserService {
 
     console.log("updade service ", userIndex);
 
-    let new_user_password = generatePassword(8);
+    let new_user_password: string = generatePassword(8);
 
     const resetPassword = { new_user_password };
     console.log('Update senha: ',resetPassword);
-    users[userIndex].user_password = resetPassword['user_password'];
+    users[userIndex].user_password = new_user_password
     return resetPassword;
   }
 }

@@ -1,7 +1,6 @@
-
 import express from "express";
 import bodyParser from "body-parser";
-import UserController from "./User/user.controller.js";
+import UserController from "./Classes/User/user.controller.js";
 
 const app = express();
 const port = 3000;

@@ -1,4 +1,5 @@
 import { UUID, randomUUID } from "crypto";
+import User from "./user.entity";
 
 export default class UserDTO {
   
@@ -6,14 +7,14 @@ export default class UserDTO {
   user_email: string;
   user_password: string;
 
-  constructor({ user_id, user_email, user_password }, create = false) {
+  constructor(user: User, create = false) {
     if (create) {
       this.user_id = randomUUID();
     } else {
-      this.user_id = this.setId(user_id);
+      this.user_id = this.setId(user.user_id);
     }
-    this.user_email = user_email;
-    this.user_password = this.setPassword(user_password);
+    this.user_email = user.user_email;
+    this.user_password = this.setPassword(user.user_password);
   }
 
   setId(user_id: UUID) {

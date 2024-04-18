@@ -18,7 +18,7 @@ const errorMap = {
     description: "Registro já existente",
   },
 };
-
+/*
 export default class GenericException {
   constructor(errorCode) {
     const errorInfo = errorMap[errorCode];
@@ -37,3 +37,4 @@ export default class GenericException {
 }
 
 module.exports = { GenericException };
+*/

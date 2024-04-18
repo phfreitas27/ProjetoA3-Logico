@@ -1,22 +1,20 @@
-const { v4: uuidv4 } = require("uuid");
-const User = require("./user.entity.js");
-const UserDTO = require("./user.dto.js");
-const { GenericException } = require("../generic-exception.js");
+import { UUID, randomUUID } from "crypto";
+import UserDTO from "./user.dto.ts";
 
 const users = [
   {
-    user_id: uuidv4(),
+    user_id: randomUUID(),
     user_email: "teste@teste.com",
     user_password: "1234567@",
   },
   {
-    user_id: uuidv4(),
+    user_id: randomUUID(),
     user_email: "pedrofreitas@teste.com",
     user_password: "Pedro1210@",
   },
 ];
 
-function generatePassword(length) {
+function generatePassword(length: number) {
   var charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
       returnValue = "";
   for (var i = 0, n = charset.length; i < length; ++i) {
@@ -25,8 +23,8 @@ function generatePassword(length) {
   return returnValue;
 }
 
-class UserService {
-  create(UserDTO) {
+export default class UserService {
+  create(UserDTO: { user_id: UUID; user_email: string; user_password: string; }) {
     users.push(UserDTO);
     return UserDTO;
   }
@@ -35,11 +33,11 @@ class UserService {
     return users.map((user) => new UserDTO(user));
   }
 
-  login(user_email, user_password) {
+  login(user_email: string, user_password: string) {
     return users.filter((user) => user.user_email === user_email && user.user_password === user_password);
   }
 
-  updatePassword(user_id, user_password) {
+  updatePassword(user_id: string, user_password: any) {
     const userIndex = users.findIndex((user) => user.user_id === user_id);
 
     let foundUser = userIndex === -1 ? false : true;
@@ -53,7 +51,7 @@ class UserService {
     return updatePassword;
   }
 
-  resetPassword(user_email) {
+  resetPassword(user_email: string) {
     const userIndex = users.findIndex((user) => user.user_email === user_email);
 
     let foundUser = userIndex === -1 ? false : true;

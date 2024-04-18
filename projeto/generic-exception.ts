@@ -19,12 +19,12 @@ const errorMap = {
   },
 };
 
-class GenericException {
+export default class GenericException {
   constructor(errorCode) {
     const errorInfo = errorMap[errorCode];
     const status = errorInfo
       ? errorInfo.status
-      : HttpStatus.INTERNAL_SERVER_ERROR;
+      : http.INTERNAL_SERVER_ERROR;
     const description = errorInfo
       ? errorInfo.description
       : "Erro interno do servidor";

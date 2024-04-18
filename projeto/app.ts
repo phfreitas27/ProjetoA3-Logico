@@ -1,7 +1,7 @@
-// app.js
-const express = require("express");
-const bodyParser = require("body-parser");
-const UserController = require("./User/user.controller.js");
+
+import express from "express";
+import bodyParser from "body-parser";
+import UserController from "./User/user.controller.js";
 
 const app = express();
 const port = 3000;

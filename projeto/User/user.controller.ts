@@ -1,9 +1,8 @@
-const UserService = require('./user.service');
+import UserService from './user.service';
 const userService = new UserService();
-const UserDTO = require('./user.dto.js');
-const { GenericException } = require("../generic-exception.js");
+import UserDTO from './user.dto.ts';
 
-class UserController {
+export default class UserController {
     createUser(req, res) {
         //const userDTO = new UserDTO(req.body,true);
         //const user = userService.create(new UserDTO(req.body,true));

@@ -431,30 +431,41 @@ main {
     flex-direction: column;
     position: fixed;
     left: 50%;
-    top: 40%;
+    top: 50%;
     transform: translate(-50%,-50%);
     background-color: purple;
     z-index: 10;
-    width: 900px;
-    height: 600px;
+    width: 800px;
+    height: 530px;
     padding: 1.2rem;
     border-radius: 0.5rem;
 }
 
 .Form input{
-    border-radius: 10px;
-    height: 30px;
-    margin-bottom: 10px;
-    margin-top: 20px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    margin-top: 15px;
 }
 
 .Form h3{
+    color: white;
     margin-top: 30px;
+}
+
+h1{
+    color: white;
+    font-size: 40px;
+}
+
+#grid-perfil{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #Button-save{
     padding: 10px 20px;
-    margin-top: 15px;
+    margin-top: 5px;
     background-color: rgb(66, 2, 66);
     border: none;
     border-radius: 5px;
@@ -469,4 +480,9 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#input-grid input{
+    width:740px;
+    height: 25px;
 }
